@@ -1,0 +1,50 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+.pnpm-debug.log*
+
+# Test / coverage
+coverage
+*.lcov
+
+# Deploy / runtime caches
+.vercel
+.turbo
+*.local
+
+# Misc / OS
+.DS_Store
+.fleet
+.idea
+Thumbs.db
+ehthumbs.db
+*.swp
+*~
+
+# Local env files (no secrets in repo)
+.env
+.env.*
+!.env.example
+.pnpm-store/
+docker/compose.yaml.env
+
+# VS Code / Cursor: configurazione debug locale (non versionata)
+.vscode/launch.json
+docs/API-PEOPLE.md
+
+/.vscode/launch.json
+
+# Script: cache fetch People da CMS (rigenerabile)
+scripts/people-all-cache.json
+

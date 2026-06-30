@@ -1,0 +1,79 @@
+# Git
+.git
+.gitignore
+
+# Dependency directories
+node_modules
+**/node_modules
+
+# Nuxt / build outputs
+.nuxt
+.output
+.dist
+.cache
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+
+# Test / coverage
+coverage
+.nyc_output
+
+# Temporary / backup files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+*.bak
+*.orig
+
+# Local env overrides
+.env.local
+.env.*.local
+
+# Docs and CI not needed in image build
+docs
+.github
+
+# Optional local artifacts
+tmp
+temp
+
+# Package manager stores
+.pnpm-store
+**/.pnpm-store
+
+# Environment files - never send secrets/build envs to Docker context
+.env
+.env.*
+!.env.example
+
+# IARTNET docker hardening - local package stores
+.pnpm-store
+**/.pnpm-store
+
+# IARTNET docker hardening - environment files and backups
+.env
+.env.*
+**/.env
+**/.env.*
+*.env
+*.env.*
+docker/.env
+docker/.env.*
+docker/compose.yaml.env
+
+# Keep public examples if present
+!.env.example
+!**/.env.example

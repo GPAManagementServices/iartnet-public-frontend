@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <g>
+    <path d="M12,1v4" stroke="currentColor" vector-effect="non-scaling-stroke" stroke-width="1.6" />
+    <path d="M4.22,4.22l2.83,2.83" stroke="currentColor" vector-effect="non-scaling-stroke" stroke-width="1.6" />
+    <path d="M1,12h4" stroke="currentColor" vector-effect="non-scaling-stroke" stroke-width="1.6" />
+    <path d="M4.22,19.78l2.83-2.83" stroke="currentColor" vector-effect="non-scaling-stroke" stroke-width="1.6" />
+    <path d="M12,23v-4" stroke="currentColor" vector-effect="non-scaling-stroke" stroke-width="1.6" />
+    <path d="M19.78,19.78l-2.83-2.83" stroke="currentColor" vector-effect="non-scaling-stroke" stroke-width="1.6" />
+    <path d="M23,12h-4" stroke="currentColor" vector-effect="non-scaling-stroke" stroke-width="1.6" />
+    <path d="M19.78,4.22l-2.83,2.83" stroke="currentColor" vector-effect="non-scaling-stroke" stroke-width="1.6" />
+  </g>
+	<animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12" />
+</svg>

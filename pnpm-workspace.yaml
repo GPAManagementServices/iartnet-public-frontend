@@ -1,0 +1,7 @@
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - vue-demi
+overrides:
+  fast-xml-parser: '>=5.3.6'
+  h3: '>=1.15.11'
+  svgo: 4.0.1

@@ -1,0 +1,199 @@
+:root {
+  --title-large: 36px;
+  --title: 24px;
+  --text-large: 21px;
+  --text: 18px;
+  --text-small: 14px;
+  --text-mini: 12px;
+
+  --app-margin: 16px;
+  --app-padding: 16px;
+  --app-gap: 12px;
+  --app-content: 1280px;
+
+  --SearchItem-title: 24px;
+  --SearchItem-author: 14px;
+  --SearchItem-datazione: 14px;
+
+  /* Person card — institution accordion name (tokens; font-size responsive) */
+  --people-inst-badge-name-font-size: 16px;
+  --people-inst-badge-name-font-weight: 700;
+  --people-inst-badge-name-font-style: normal;
+  --people-inst-badge-name-line-height: 120%;
+  --people-inst-badge-name-letter-spacing: 0.5px;
+  --people-inst-badge-name-leading-trim: none;
+
+  /* People — institution accordion trigger (`.PeopleAccordionTrigger--institution`; font-size responsive) */
+  --people-accordion-inst-trigger-font-family: 'Satoshi', sans-serif;
+  --people-accordion-inst-trigger-font-size: 24px;
+  --people-accordion-inst-trigger-font-weight: 700;
+  --people-accordion-inst-trigger-font-style: normal;
+  --people-accordion-inst-trigger-line-height: 120%;
+  --people-accordion-inst-trigger-letter-spacing: 0.5px;
+  --people-accordion-inst-trigger-leading-trim: none;
+
+  /* Layout — People accordion triggers (institution / top sections) */
+  --people-accordion-inst-trigger-padding-y-mobile: 40px;
+  --people-accordion-inst-trigger-padding-y-desktop: 40px;
+  --people-accordion-inst-trigger-gap-mobile: 24px;
+  --people-accordion-inst-trigger-gap-desktop: 12px;
+  --people-accordion-inst-trigger-border-top: 1px solid #1111111a;
+  --people-accordion-inst-trigger-min-height-mobile: 138px;
+  --people-accordion-inst-trigger-height-desktop: 118px;
+
+  /* Contenuto aperto accordion People (spacing verticale tra blocchi diretti; Figma 64) */
+  --people-accordion-content-gap: 64px;
+
+  /* Griglia elenco persone accordion — mobile only (Figma: 2 col, gap riga/colonna) */
+  --people-accordion-grid-mobile-column-gap: 20px;
+  --people-accordion-grid-mobile-row-gap: 16px;
+
+  /* Narratives — story sections (see story-sections.css) */
+  --story-breakpoint: 1024px;
+  --story-color-text: #000;
+  --story-color-background: #fff;
+  --story-color-border: rgba(17, 17, 17, 0.1);
+  --story-prose-font-weight: 400;
+  --story-prose-font-size: var(--text);
+  --story-prose-line-height: 1.4;
+  --story-prose-letter-spacing: 0;
+  --story-text-intro-font-weight: 400;
+  --story-text-intro-font-size: 24px;
+  --story-text-intro-line-height: 32px;
+  --story-text-intro-letter-spacing: 0;
+  --story-inline-text-font-weight: 400;
+  --story-inline-text-font-size: 21px;
+  --story-inline-text-line-height: 140%;
+  --story-inline-text-letter-spacing: 0;
+  --story-inline-text-leading-trim: none;
+  --story-caption-font-size: var(--text-small);
+  --story-caption-line-height: 1.4;
+  --story-caption-max-width: 960px;
+  --story-caption-overlay-max-width: 688px;
+  --story-caption-overlay-font-weight: 400;
+  --story-caption-overlay-font-size: 16px;
+  --story-caption-overlay-line-height: 140%;
+  --story-caption-overlay-letter-spacing: 0;
+  --story-iif-caption-image-max-height: 500px;
+  --story-iif-caption-max-height: 750px;
+  /* IIIF viewer on mobile: quasi tutta la viewport; caption in overlay in basso */
+  --story-iif-caption-mobile-reserve: 9rem;
+  --story-iif-viewer-mobile-height: calc(
+    100dvh - var(--story-iif-caption-mobile-reserve) - env(safe-area-inset-bottom, 0px)
+  );
+  /* IIIF caption overlay on mobile: viewport minus caption bottom inset (16) */
+  --story-iif-caption-mobile-gutter: 16px;
+  --story-iif-caption-mobile-width: calc(100dvw - 2 * var(--story-iif-caption-mobile-gutter));
+  --story-iif-caption-mobile-max-height: min(
+    calc(100% - 16px),
+    calc(100dvh - 16px - env(safe-area-inset-bottom, 0px))
+  );
+  --story-iif-caption-mobile-image-max-height: min(
+    200px,
+    calc(var(--story-iif-caption-mobile-max-height) - 8rem)
+  );
+  --story-inline-text-max-width: 680px;
+  --story-text-intro-max-width: 900px;
+  --story-text-intro-gutter-desktop: 270px;
+  --story-content-max-desktop: 1440px;
+  --story-inline-text-padding-y: 64px;
+  --story-text-intro-gap-mobile: 1.5rem;
+  --story-text-intro-gap-desktop: 40px;
+  --story-text-intro-padding-block-mobile: 32px;
+  --story-text-intro-padding-inline-mobile: 16px;
+  --story-text-intro-padding-desktop: 120px 0;
+  --story-inline-image-padding: 48px 16px 32px;
+  --story-inline-image-padding-desktop: 96px 120px 67px;
+  --story-inline-image-figure-gap: 16px;
+  /* Viewport minus vertical padding + caption line + gap (pinned panel) */
+  --story-inline-image-max-height: calc(100dvh - 200px);
+  --story-split-content-column-width: 618px;
+  --story-split-content-font-size: 21px;
+  --story-split-content-line-height: 140%;
+  --story-split-content-letter-spacing: 0;
+  --story-split-content-left-font-weight: 700;
+  --story-split-content-right-font-weight: 400;
+  --story-split-content-column-gap: 32px;
+  --story-split-content-block-gap: 1.5rem;
+  --story-split-content-padding-inline-mobile: 16px;
+  --story-split-content-margin-block: 128px;
+  --story-split-image-inline-vertical-media-margin-left: 42px;
+  --story-split-image-inline-vertical-media-margin-right: 170px;
+  --story-split-cover-media-edge-gutter: 3vw;
+  /* SplitImage inline desktop — vertical inset for image+caption column */
+  --story-split-image-media-padding-block: 1rem;
+  --story-bibliography-max-width: 941px;
+  --story-bibliography-font-weight: 400;
+  --story-bibliography-font-size: 21px;
+  --story-bibliography-line-height: 140%;
+  --story-bibliography-letter-spacing: 0;
+  --story-bibliography-padding-inline-mobile: 16px;
+  --story-bibliography-margin-right: 42px;
+  --story-footer-section-margin-block: 64px;
+  --story-footer-section-border-top: 1px solid rgba(0, 0, 0, 0.15);
+  --story-section-min-height: 100vh;
+  --story-section-min-height: 100dvh;
+  /* Extra scroll (× viewport height) between consecutive fullscreen layers in a stack */
+  --story-image-fullscreen-dwell-vh: 0.75;
+  /* 0 = peel progress 1:1 with scroll (GAC-like) */
+  --story-fullscreen-peel-scrub: 0;
+  --story-scroll-reveal-step-min-height: 80vh;
+  --story-scroll-reveal-step-min-height: 80dvh;
+  --story-scroll-reveal-sticky-height: 100vh;
+  --story-scroll-reveal-sticky-height: 100dvh;
+  --story-scroll-reveal-scroll-per-step-vh: 2;
+  --story-scroll-reveal-media-transition-ms: 400ms;
+  /* Slide media: frazione timeline scroll-reveal (0.25 = fade); più alto = transizione più lenta */
+  --story-scroll-reveal-slide-transition-ratio: 0.5;
+  --story-scroll-reveal-text-padding-block: 0;
+  --story-scroll-reveal-text-start-ratio: 0.666;
+  --story-scroll-reveal-paragraph-gap: 0.35em;
+  --story-scroll-reveal-padding-block: 50px;
+  --story-scroll-reveal-content-height: calc(
+    var(--story-scroll-reveal-sticky-height) - 2 * var(--story-scroll-reveal-padding-block)
+  );
+  --story-section-bg-image-blur: 24px;
+}
+
+@media (max-width: 767px) {
+  :root {
+    /* Narratives — body copy at 16px on mobile; desktop tokens unchanged */
+    --story-prose-font-size: 16px;
+    --story-text-intro-font-size: 16px;
+    --story-inline-text-font-size: 16px;
+    --story-split-content-font-size: 16px;
+    --story-bibliography-font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --app-padding: 24px;
+    --app-gap: 16px;
+
+    --people-inst-badge-name-font-size: 17px;
+
+    --people-accordion-inst-trigger-font-size: var(--ui-text-xxlarge);
+    --people-accordion-inst-trigger-line-height: 1.2;
+    --people-accordion-inst-trigger-letter-spacing: 0.01em;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --title-large: 48px;
+    --title: 32px;
+    --text-large: 24px;
+    --text: 21px;
+    --text-small: 16px;
+    --text-mini: 13px;
+
+    --app-padding: 40px;
+    --app-margin: 16px;
+    --app-gap: 24px;
+
+    --SearchItem-title: 24px;
+    --SearchItem-author: 14px;
+    --SearchItem-datazione: 14px;
+  }
+}

@@ -1,0 +1,55 @@
+publiccodeYmlVersion: "0.2"
+name: iartnet-frontend
+url: "https://github.com/GPAManagementServices/iartnet_frontend"
+softwareVersion: "1.0.0"
+releaseDate: "2026-06-28"
+platforms:
+  - web
+categories:
+  - website
+  - content-management
+developmentStatus: active
+softwareType: standalone
+description:
+  it:
+    localisedName: IARTNET Frontend
+    shortDescription: Portale pubblico Nuxt 3 per il catalogo e le narrazioni IARTNET.
+    longDescription: >
+      Frontend SSR (Nuxt 3 / Nitro) del sistema IARTNET: integrazione con CMS,
+      API ingestion, IIIF Image API, SEO, i18n IT/EN.
+    features:
+      - PNRR
+      - PNRR/Beneficiari/Istituti di ricerca e AFAM
+      - PNRR/Misura/1.4.1
+  en:
+    localisedName: IARTNET Frontend
+    shortDescription: Public Nuxt 3 portal for IARTNET catalogue and narratives.
+    longDescription: >
+      SSR frontend for IARTNET integrating CMS, ingestion API, and IIIF.
+legal:
+  license: AGPL-3.0-or-later
+maintenance:
+  type: internal
+  contacts:
+    - name: Accademia di Brera
+      affiliation: Accademia di Brera
+    - name: GPA Management Services
+      email: info@gpams.it
+      affiliation: GPA Management Services
+localisation:
+  availableLanguages:
+    - it
+    - en
+dependsOn:
+  open:
+    - name: Nuxt
+      version: "3"
+      description: Framework frontend
+      url: "https://nuxt.com"
+it:
+  conforme:
+    - modello-interoperabilita
+    - gdpr
+  countryExtensionVersion: "0.2"
+  piattaforme:
+    - web

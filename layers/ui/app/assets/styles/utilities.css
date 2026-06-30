@@ -1,0 +1,20 @@
+.disabled,
+:disabled,
+[disabled]:not([disabled='false']),
+[data-disabled]:not([data-disabled='false']) {
+  opacity: 0.75 !important;
+  cursor: not-allowed !important;
+}
+.disabled *,
+:disabled *,
+[disabled]:not([disabled='false']) *,
+[data-disabled]:not([data-disabled='false']) * {
+  opacity: 1 !important;
+  cursor: not-allowed !important;
+}
+
+.truncate {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

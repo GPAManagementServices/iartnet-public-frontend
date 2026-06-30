@@ -1,0 +1,147 @@
+:root {
+  /* UI variables */
+  --ui-radius: 4px;
+  --ui-radius-large: 8px;
+  --ui-radius-full: 99999px;
+
+  /* Typography */
+  --ui-text-xxlarge: 32px;
+  --ui-text-extralarge: 26px;
+  --ui-text-large: 21px;
+  --ui-text: 17px;
+  --ui-text-small: 14px;
+  --ui-text-extrasmall: 12px;
+
+  --regular: 400;
+  --medium: 500;
+  --bold: 700;
+
+  /* Shadow */
+  --shadow: 0px 4px 6px var(--black-a2);
+
+  /* Colors */
+  /* Gray */
+  --gray-1: #fcfcfc;
+  --gray-2: #e8e8e8;
+  --gray-3: #cecece;
+  --gray-4: #bbbbbb;
+  --gray-5: #b3b3b3;
+  --gray-6: #8d8d8d;
+  --gray-7: #7b7b7b;
+  --gray-8: #646464;
+  --gray-9: #474747;
+  --gray-10: #393939;
+  --gray-11: #292929;
+  --gray-12: #111111;
+
+  /* Accent */
+  --accent-1: #fffcfd;
+  --accent-2: #ffd2e3;
+  --accent-3: #f0c0d2;
+  --accent-4: #dc96b2;
+  --accent-5: #ef5ba1;
+  --accent-6: #e14e95;
+  --accent-7: #ad4575;
+  --accent-8: #86355a;
+  --accent-9: #6c2647;
+  --accent-10: #5f1b3c;
+  --accent-11: #381625;
+  --accent-12: #160e11;
+
+  /* Black alpha */
+  --black-a1: rgba(0, 0, 0, 0.05);
+  --black-a2: rgba(0, 0, 0, 0.1);
+  --black-a3: rgba(0, 0, 0, 0.15);
+  --black-a4: rgba(0, 0, 0, 0.2);
+  --black-a5: rgba(0, 0, 0, 0.3);
+  --black-a6: rgba(0, 0, 0, 0.4);
+  --black-a7: rgba(0, 0, 0, 0.5);
+  --black-a8: rgba(0, 0, 0, 0.6);
+  --black-a9: rgba(0, 0, 0, 0.7);
+  --black-a10: rgba(0, 0, 0, 0.8);
+  --black-a11: rgba(0, 0, 0, 0.9);
+  --black-a12: rgba(0, 0, 0, 0.95);
+
+  /* White alpha */
+  --white-a1: rgba(255, 255, 255, 0.05);
+  --white-a2: rgba(255, 255, 255, 0.1);
+  --white-a3: rgba(255, 255, 255, 0.15);
+  --white-a4: rgba(255, 255, 255, 0.2);
+  --white-a5: rgba(255, 255, 255, 0.3);
+  --white-a6: rgba(255, 255, 255, 0.4);
+  --white-a7: rgba(255, 255, 255, 0.5);
+  --white-a8: rgba(255, 255, 255, 0.6);
+  --white-a9: rgba(255, 255, 255, 0.7);
+  --white-a10: rgba(255, 255, 255, 0.8);
+  --white-a11: rgba(255, 255, 255, 0.9);
+  --white-a12: rgba(255, 255, 255, 0.95);
+}
+
+:root,
+.light {
+  --ui-neutral-background: white;
+  --ui-neutral-background-hover: var(--gray-1);
+  --ui-neutral-interactive: var(--gray-2);
+  --ui-neutral-interactive-hover: var(--gray-3);
+  --ui-neutral-border: var(--black-a2); /*var(--gray-4);*/
+  --ui-neutral-solid: var(--gray-9);
+  --ui-neutral-solid-hover: var(--gray-10);
+  --ui-neutral-text: var(--gray-12);
+  --ui-neutral-text-hover: var(--gray-11);
+
+  --ui-accent-border: var(--accent-4);
+  --ui-accent-solid: var(--accent-6);
+  --ui-accent-solid-hover: var(--accent-7);
+
+  --bg-color: white;
+  --border-color: var(--black-a2);
+}
+
+.dark {
+  --ui-neutral-background: black;
+  --ui-neutral-background-hover: var(--gray-12);
+  --ui-neutral-interactive: var(--gray-11);
+  --ui-neutral-interactive-hover: var(--gray-10);
+  --ui-neutral-border: var(--gray-9);
+  --ui-neutral-solid: var(--gray-4);
+  --ui-neutral-solid-hover: var(--gray-3);
+  --ui-neutral-text: var(--gray-1);
+  --ui-neutral-text-hover: var(--gray-2);
+
+  --ui-accent-border: var(--accent-9);
+  --ui-accent-solid: var(--accent-7);
+  --ui-accent-solid-hover: var(--accent-6);
+}
+
+/* :root,
+.light {
+  --bg-color: white;
+  --border-color: var(--black-a2);
+  --bg-hover: var(--gray-3);
+  --bg-secondary: var(--gray-4);
+  --text-secondary: var(--gray-8);
+  --text-secondary-hover: var(--gray-9);
+  --text-color: var(--gray-11);
+  --text-hover: var(--gray-12);
+
+  --bg-map: var(--black-a1);
+
+  --accent: var(--accent-7);
+  --accent-hover: var(--accent-8);
+}
+
+.dark {
+  --bg-color: var(--gray-11);
+  --bg-hover: var(--gray-12);
+  --bg-secondary: var(--gray-10);
+  --border-color: var(--white-a2);
+  --text-secondary: var(--gray-5);
+  --text-secondary-hover: var(--gray-4);
+  --text-color: var(--gray-3);
+  --text-hover: white;
+
+  --bg-map: var(--black-a4);
+
+  --accent: var(--accent-7);
+  --accent-hover: var(--accent-6);
+} */

@@ -1,0 +1,144 @@
+/**
+ * narratives-dev CSS scroll motion (no GSAP).
+ * Scoped under `.narrative-page--css-motion` — only narratives-dev slug page.
+ */
+
+/* Phase 1: fullscreen panel pin (SplitImage fuori stack, IIIF, ecc.) */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .narrative-page--css-motion .narrative-panels > .story-section-renderer.panel:not(
+    .story-section-renderer--natural-height,
+    .story-section-renderer--in-fullscreen-stack
+  ) {
+    position: relative;
+    z-index: var(--panel-z-index, 1);
+  }
+
+  .narrative-page--css-motion .narrative-panels > .story-section-renderer.panel:not(
+    .story-section-renderer--natural-height,
+    .story-section-renderer--in-fullscreen-stack
+  ):not([data-section-kind="TextIntro"]) {
+    position: sticky;
+    top: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    /* Dwell extra scroll dopo il contenuto (≈ GSAP pinEndExtraPx) */
+    padding-bottom: calc(var(--story-image-fullscreen-dwell-vh) * 100vh);
+    padding-bottom: calc(var(--story-image-fullscreen-dwell-vh) * 100dvh);
+  }
+
+  .narrative-page--css-motion .narrative-panels > .story-section-renderer--iif-annotations {
+    isolation: isolate;
+  }
+
+  /*
+   * Phase 2–3: stack hold + peel — pin-host limita sticky; layer assoluti + translateY (≈ GSAP).
+   */
+  .narrative-page--css-motion .story-stack-pin-host {
+    position: relative;
+    height: calc(var(--story-section-min-height) + var(--story-stack-scroll-px, 0px));
+    box-sizing: border-box;
+    z-index: var(--panel-z-index, 1);
+  }
+
+  .narrative-page--css-motion .story-fullscreen-stack--css-hold,
+  .narrative-page--css-motion .story-fullscreen-stack--css-peel {
+    position: sticky;
+    top: 0;
+    box-sizing: border-box;
+    height: var(--story-section-min-height);
+    min-height: var(--story-section-min-height);
+    isolation: isolate;
+  }
+
+  .narrative-page--css-motion .story-fullscreen-stack--pin-offscreen {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .narrative-page--css-motion
+    .story-fullscreen-stack--css-hold
+    .story-fullscreen-stack__layer,
+  .narrative-page--css-motion
+    .story-fullscreen-stack--css-peel
+    .story-fullscreen-stack__layer {
+    position: absolute !important;
+    inset: 0 !important;
+    top: 0 !important;
+    width: 100%;
+    box-sizing: border-box;
+    height: var(--story-section-min-height);
+    min-height: var(--story-section-min-height);
+    margin-bottom: 0 !important;
+    overflow: hidden;
+    will-change: transform;
+    background-color: var(--story-color-background);
+  }
+
+  /*
+   * Phase 4: video layers fade (≈ GSAP autoAlpha) durante peel — opacity da useCssStackPeelMotion.
+   */
+  .narrative-page--css-motion
+    .story-fullscreen-stack--css-peel-video
+    .story-fullscreen-stack__layer--video:not(:last-child)
+    .story-split-image__video {
+    will-change: opacity;
+  }
+
+  .narrative-page--css-motion
+    .story-fullscreen-stack--css-peel-video
+    .story-section-video-player__iframe,
+  .narrative-page--css-motion
+    .story-fullscreen-stack--css-peel-video
+    .story-section-video-player__embed iframe,
+  .narrative-page--css-motion
+    .story-fullscreen-stack--css-hold-video
+    .story-section-video-player__iframe,
+  .narrative-page--css-motion
+    .story-fullscreen-stack--css-hold-video
+    .story-section-video-player__embed iframe {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /*
+   * Phase 5: ScrollReveal — pin host bounds sticky travel; renderer sticks inside host only.
+   */
+  .narrative-page--css-motion .story-scroll-reveal-pin-host {
+    position: relative;
+    height: calc(var(--story-scroll-reveal-sticky-height) + var(--story-scroll-reveal-travel-px, 0px));
+    box-sizing: border-box;
+    z-index: var(--panel-z-index, 1);
+  }
+
+  .narrative-page--css-motion .story-scroll-reveal-pin-host > .story-section-renderer.panel {
+    position: sticky;
+    top: 0;
+    z-index: var(--panel-z-index, 1);
+    box-sizing: border-box;
+    background-color: var(--story-color-background);
+  }
+
+  .narrative-page--css-motion .story-scroll-reveal--css-motion {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .narrative-page--css-motion .story-scroll-reveal--css-motion .story-scroll-reveal__layout {
+    position: relative;
+    top: auto;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    height: var(--story-scroll-reveal-sticky-height);
+    background-color: var(--story-color-background);
+  }
+
+  .narrative-page--css-motion .story-scroll-reveal--fade-media .story-scroll-reveal__media-layer--gsap {
+    will-change: opacity;
+  }
+
+  .narrative-page--css-motion .story-section-renderer.story-scroll-reveal-renderer--offscreen {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}

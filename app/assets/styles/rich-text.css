@@ -1,0 +1,51 @@
+.rich-text {
+  & > * + * {
+    margin-top: 1em;
+  }
+
+  .rich-text h2,
+  h3 {
+    margin-left: 0;
+  }
+
+  h2,
+  h3 {
+    font-size: var(--title);
+    margin-bottom: 1em;
+    margin-top: 2em;
+  }
+
+  a {
+    color: var(--accent-6);
+  }
+
+  strong {
+    font-weight: var(--medium);
+  }
+
+  /* Prefer explicit types: `list-style: initial` uses list-style-type’s initial value
+     (`disc`), so <ol> would never show numbers. */
+  ul {
+    list-style-type: disc;
+    list-style-position: outside;
+    margin-left: 1em;
+  }
+
+  ol {
+    list-style-type: decimal;
+    list-style-position: outside;
+    margin-left: 1em;
+  }
+
+  li {
+    padding-left: 0.4em;
+  }
+
+  li::marker {
+    color: var(--gray-3);
+  }
+
+  li + li {
+    margin-top: 0.8em;
+  }
+}

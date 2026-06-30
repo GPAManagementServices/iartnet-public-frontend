@@ -1,0 +1,420 @@
+/**
+ * Narratives — shared story section styles.
+ * Layout-specific rules stay in each `Story*Section.vue`; typography/captions live here.
+ */
+
+/* Opaque panels — prevents bleed-through during GSAP scroll pin stacking */
+.story-panel-opaque {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: var(--story-color-background);
+  isolation: isolate;
+}
+
+/* Section-level bgColor / blurred bgImage (StorySectionRenderer) */
+.story-section-renderer--section-bg {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.story-section-renderer__bg-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: blur(var(--story-section-bg-image-blur));
+  transform: scale(1.08);
+  pointer-events: none;
+}
+
+.story-section-renderer--section-bg > :not(.story-section-renderer__bg-image) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Sezione interna sempre trasparente (batte scoped + inline legacy) */
+.story-section-renderer.story-panel-opaque.story-section-renderer--section-bg .story-section,
+.story-section-renderer--section-bg .story-section {
+  background-color: transparent !important;
+}
+
+.story-section-renderer--section-bg.story-section-renderer--split-content .story-section--split-content {
+  background-color: transparent !important;
+}
+
+/* foreColor / FontColor — testo sezione (esclusi overlay su immagini) */
+.story-section-renderer--section-fore-color {
+  color: var(--story-section-fore-color);
+}
+
+.story-section-renderer--section-fore-color :where(
+  .story-prose,
+  .story-caption:not(.story-caption--overlay),
+  .story-split-image__text,
+  .story-split-image__text-outer,
+  .story-scroll-reveal__prose
+) {
+  color: var(--story-section-fore-color);
+}
+
+.story-section-renderer.story-panel-opaque {
+  z-index: var(--panel-z-index, 1);
+}
+
+.story-section-renderer.story-panel-opaque:not(.story-section-renderer--natural-height) {
+  min-height: var(--story-section-min-height);
+}
+
+/* GAC-style stack: overlapping fullscreen layers, timeline peel on scroll */
+.story-fullscreen-stack {
+  position: relative;
+  width: 100%;
+  height: var(--story-section-min-height);
+  isolation: isolate;
+}
+
+.story-fullscreen-stack__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  will-change: transform;
+  background-color: var(--story-color-background);
+}
+
+.story-fullscreen-stack__layer .story-section-renderer.story-panel-opaque:not(.story-section-renderer--natural-height) {
+  min-height: 0;
+}
+
+.story-fullscreen-stack__layer .story-section--image-full-screen {
+  height: 100%;
+  min-height: 100%;
+}
+
+.story-fullscreen-stack__layer .story-section--split-image {
+  height: 100%;
+  min-height: 100%;
+}
+
+.story-fullscreen-stack__layer .story-section--split-image .story-split-image__inner {
+  height: 100%;
+  min-height: 100%;
+}
+
+.story-section-renderer--iif-annotations:not(.story-section-renderer--in-fullscreen-stack):not(:has(.story-section--iif-annotations)) {
+  min-height: 0;
+  height: auto;
+}
+
+.story-section-renderer--iif-annotations:not(.story-section-renderer--in-fullscreen-stack):has(.story-section--iif-annotations) {
+  min-height: var(--story-section-min-height);
+}
+
+.story-section--iif-annotations {
+  height: 100%;
+  min-height: var(--story-section-min-height);
+}
+
+.story-section-renderer.story-panel-opaque:not(.story-section-renderer--natural-height) .story-section--iif-annotations {
+  min-height: var(--story-section-min-height);
+}
+
+.story-section-renderer.story-panel-opaque .story-section {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: var(--story-color-background);
+}
+
+.story-section-renderer.story-panel-opaque:not(.story-section-renderer--natural-height) .story-section:not(.story-section--inline-image) {
+  min-height: var(--story-section-min-height);
+}
+
+/* SplitContent — vertical spacing on wrapper (padding: no collapse under GSAP pin) */
+.story-section-renderer--split-content {
+  display: flow-root;
+  box-sizing: border-box;
+  position: relative;
+  z-index: var(--panel-z-index, 1);
+  padding-top: var(--story-split-content-margin-block);
+  padding-bottom: var(--story-split-content-margin-block);
+  background-color: var(--story-color-background);
+  isolation: isolate;
+}
+
+.story-section-renderer--split-content .story-section--split-content {
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Inline image: keep caption visible inside pinned 100vh panels */
+.story-section-renderer--inline-image {
+  overflow: visible;
+}
+
+.story-section-renderer--inline-image .story-section--inline-image {
+  justify-content: flex-start;
+  overflow: visible;
+}
+
+.story-section-renderer--inline-image .story-inline-image__figure {
+  flex: 0 1 auto;
+  max-height: 100%;
+}
+
+.story-section-renderer--inline-image .story-inline-image__stack {
+  flex: 0 1 auto;
+  max-height: 100%;
+  min-height: 0;
+}
+
+.story-section-renderer--inline-image .story-inline-image__image {
+  max-height: var(--story-inline-image-max-height);
+}
+
+.story-section-renderer--inline-image .story-inline-image__caption {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+/* Sfondo sezione: clip blur/color dentro i confini del pannello */
+.story-section-renderer--section-bg.story-section-renderer--inline-image {
+  overflow: hidden;
+}
+
+.story-section {
+  box-sizing: border-box;
+  min-height: var(--story-section-min-height);
+}
+
+.story-section--split-content {
+  min-height: auto;
+}
+
+/* Footer blocks — bibliography, catalog */
+.story-section--bibliography,
+.story-section--catalogo-opere-citate {
+  border-top: var(--story-footer-section-border-top);
+}
+
+/* Break out of `.container` on narrative pages */
+.story-section--bleed {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-block: 0;
+}
+
+/* CMS HTML body copy (v-html blocks) */
+.story-prose {
+  margin: 0;
+  font-weight: var(--story-prose-font-weight);
+  font-style: normal;
+  font-size: var(--story-prose-font-size);
+  line-height: var(--story-prose-line-height);
+  letter-spacing: var(--story-prose-letter-spacing);
+  color: var(--story-color-text);
+}
+
+.story-prose p,
+.story-prose a {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.story-prose a {
+  text-decoration: underline;
+}
+
+/* Text intro typography (Figma) */
+.story-prose--intro {
+  font-weight: var(--story-text-intro-font-weight);
+  font-style: normal;
+  font-size: var(--story-text-intro-font-size);
+  line-height: var(--story-text-intro-line-height);
+  letter-spacing: var(--story-text-intro-letter-spacing);
+}
+
+/* Inline text typography (Figma) */
+.story-prose--inline {
+  font-weight: var(--story-inline-text-font-weight);
+  font-style: normal;
+  font-size: var(--story-inline-text-font-size);
+  line-height: var(--story-inline-text-line-height);
+  letter-spacing: var(--story-inline-text-letter-spacing);
+  leading-trim: var(--story-inline-text-leading-trim);
+}
+
+/* Split content — left (bold) / right (regular) columns (Figma) */
+.story-prose--split-left {
+  font-weight: var(--story-split-content-left-font-weight);
+  font-style: normal;
+  font-size: var(--story-split-content-font-size);
+  line-height: var(--story-split-content-line-height);
+  letter-spacing: var(--story-split-content-letter-spacing);
+}
+
+.story-prose--split-right {
+  font-weight: var(--story-split-content-right-font-weight);
+  font-style: normal;
+  font-size: var(--story-split-content-font-size);
+  line-height: var(--story-split-content-line-height);
+  letter-spacing: var(--story-split-content-letter-spacing);
+}
+
+/* Caption below inline image */
+.story-caption {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: var(--story-prose-font-weight);
+  font-style: normal;
+  font-size: var(--story-caption-font-size);
+  line-height: var(--story-caption-line-height);
+  letter-spacing: var(--story-prose-letter-spacing);
+  color: var(--story-color-text);
+}
+
+.story-caption :where(p, a, em, strong, b, i, span, div) {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+.story-caption a {
+  text-decoration: underline;
+}
+
+/* LinkScheda — icon overlay on story imagery */
+.story-link-scheda-media {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: top;
+}
+
+.story-link-scheda-media--fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.story-link-scheda {
+  --story-link-scheda-inset: 32px;
+
+  position: absolute;
+  z-index: 2;
+  top: var(--story-link-scheda-inset);
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  min-width: 32px;
+  height: 32px;
+  padding: 0;
+  line-height: 0;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 999px;
+}
+
+.story-link-scheda__icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.story-link-scheda :deep(.ui-icon) {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.story-link-scheda--top-left {
+  left: var(--story-link-scheda-inset);
+  flex-direction: row;
+}
+
+.story-link-scheda--top-right {
+  right: var(--story-link-scheda-inset);
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 767px) {
+  .story-link-scheda {
+    --story-link-scheda-inset: 16px;
+  }
+}
+
+.story-link-scheda__label {
+  overflow: hidden;
+  max-width: 0;
+  padding-right: 0;
+  opacity: 0;
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0;
+  color: rgba(255, 255, 255, 1);
+  transition:
+    max-width 0.2s ease,
+    opacity 0.2s ease,
+    padding-right 0.2s ease;
+}
+
+@media (hover: hover) {
+  .story-link-scheda:hover,
+  .story-link-scheda:focus-visible {
+    gap: 4px;
+  }
+
+  .story-link-scheda--top-left:hover .story-link-scheda__label,
+  .story-link-scheda--top-left:focus-visible .story-link-scheda__label {
+    max-width: 12rem;
+    padding-right: 8px;
+    opacity: 1;
+  }
+
+  .story-link-scheda--top-right:hover .story-link-scheda__label,
+  .story-link-scheda--top-right:focus-visible .story-link-scheda__label {
+    max-width: 12rem;
+    padding-right: 0;
+    padding-left: 8px;
+    opacity: 1;
+  }
+}
+
+.story-link-scheda:focus-visible {
+  outline: 2px solid var(--story-color-text, currentColor);
+  outline-offset: 2px;
+}
+
+/* Caption on full-screen / hero imagery */
+.story-caption--overlay {
+  position: absolute;
+  z-index: 2;
+  max-width: min(var(--story-caption-overlay-max-width), calc(100% - 2rem));
+  padding: 0.35rem 0.65rem;
+  font-weight: var(--story-caption-overlay-font-weight);
+  font-style: normal;
+  font-size: var(--story-caption-overlay-font-size);
+  line-height: var(--story-caption-overlay-line-height);
+  letter-spacing: var(--story-caption-overlay-letter-spacing);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  overflow-wrap: break-word;
+}

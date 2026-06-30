@@ -1,0 +1,7 @@
+.enter--appear {
+  opacity: 1 !important;
+}
+.before-enter--appear {
+  opacity: 0;
+  transition: all 1s ease;
+}

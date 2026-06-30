@@ -1,0 +1,58 @@
+# file: .github/workflows/ci.yml
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+# STG hostnames — must match build args below so CI image matches documented staging.
+# PROD pipelines must pass different --build-arg values (see _ai-context/IARTNET_ENVIRONMENTS.md).
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set app version
+        id: version
+        run: |
+          V=$(git describe --tags --always --long 2>/dev/null || echo "0.0.0-${{ github.run_number }}")
+          echo "version=$V" >> $GITHUB_OUTPUT
+      - name: Build docker image
+        run: |
+          docker build -f docker/Dockerfile -t iartnet-frontend:ci \
+            --build-arg NUXT_PUBLIC_APP_VERSION=${{ steps.version.outputs.version }} \
+            --build-arg NUXT_PUBLIC_BASE_URL=https://cms.gpams.it \
+            --build-arg NUXT_PUBLIC_BASE_DATA_URL=https://ingestion.gpams.it \
+            --build-arg NUXT_PUBLIC_BASEIIIF_URL=https://iiif.iartnet.it \
+            --build-arg NUXT_SITE_URL=https://iartnet.gpams.it \
+            --build-arg NUXT_PUBLIC_SITE_URL=https://iartnet.gpams.it \
+            .
+      - name: Verify baked public URLs (STG — expected in this workflow)
+        run: |
+          docker run --rm iartnet-frontend:ci sh -lc '\
+            grep -Rq "cms.gpams.it" /app/server && \
+            grep -Rq "iartnet.gpams.it" /app/server && \
+            echo "OK: STG URLs present in Nitro bundle as configured"'
+
+  dependency-licenses:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.31.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Report dependency licenses
+        run: pnpm licenses list
