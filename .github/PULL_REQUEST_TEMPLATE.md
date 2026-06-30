@@ -1,14 +1,23 @@
-## Riferimento
-- Requisito / user story / ticket (o ID interno): <!-- es. IARTNET-123 -->
+## Sintesi
 
-## Modifiche
-- File principali toccati:
-- Comportamento: <!-- cosa cambia per l’utente o il sistema -->
+Descrivere lo scopo della modifica.
 
-## Verifica
-- [ ] `pnpm run lint` passa
-- Come verificare: <!-- comandi o passi manuali -->
+## Issue collegata
 
-## Note
-- Migrazioni / rollout: <!-- se applicabile, istruzioni e rollback -->
-- Criteri di accettazione: <!-- se cambia comportamento -->
+Closes #
+
+## Modifiche principali
+
+-
+
+## Verifiche eseguite
+
+- [ ] Build completata
+- [ ] Test automatici completati
+- [ ] Test manuali completati
+- [ ] Nessun secret, dato personale, dump o backup aggiunto
+- [ ] Documentazione aggiornata quando necessario
+
+## Impatto e rollback
+
+Descrivere impatto, rischi e modalitÃ  di rollback.
