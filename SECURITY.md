@@ -1,20 +1,29 @@
 # Security Policy
 
-## Supported Versions
+## Segnalazione di una vulnerabilità
 
-We release security updates for the current major version. Check [releases](https://github.com/GPAManagementServices/iartnet_frontend/releases) for supported versions.
+Non segnalare vulnerabilità di sicurezza tramite Issue, Pull Request,
+Discussion o commenti pubblici.
 
-## Reporting a Vulnerability
+Usa esclusivamente il canale privato di GitHub:
 
-**Do not** open a public issue for security vulnerabilities.
+https://github.com/GPAManagementServices/iartnet-public-frontend/security/advisories/new
 
-Please report security issues by contacting the maintainers privately. If you have a GitHub account, you can use [Security Advisories](https://github.com/GPAManagementServices/iartnet_frontend/security/advisories/new) for this repository ( **Security** → **Advisories** → **Report a vulnerability** ).
+Nella segnalazione privata indica, quando possibile:
 
-Alternatively, describe the issue in a private way to the project owners (e.g. via the organization contact). Include steps to reproduce and impact where possible.
+- versione, tag o commit interessato;
+- passaggi per riprodurre il problema;
+- impatto potenziale;
+- eventuale mitigazione proposta.
 
-We will acknowledge receipt and work with you on a fix and disclosure timeline.
+Non pubblicare credenziali, token, dati personali, dati di produzione,
+dump di database o dettagli di exploit.
 
-## Best practices
+## Reporting a vulnerability
 
-- Do not commit secrets, API keys, or `.env` files (use `.env.example` as a template only).
-- Dependencies are managed with pnpm; run `pnpm install` only from trusted lockfile and update dependencies with care.
+Do not report security vulnerabilities through public Issues, Pull Requests,
+Discussions, or comments.
+
+Use GitHub private vulnerability reporting:
+
+https://github.com/GPAManagementServices/iartnet-public-frontend/security/advisories/new
